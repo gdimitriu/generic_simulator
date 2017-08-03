@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}\bigskip Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}Formal definition of base models}{1}
+\contentsline {subsection}{\numberline {1.2}Network with static structure}{2}
+\contentsline {section}{\numberline {2}Class Hierarchy and functionality}{3}
+\contentsline {subsection}{\numberline {2.1}Class CGData}{3}
+\contentsline {subsection}{\numberline {2.2}Class CGInput}{4}
+\contentsline {subsection}{\numberline {2.3}Class CGOutput}{4}
+\contentsline {subsection}{\numberline {2.4}Classes \textit {Cparser\_func, Cparser\_func\_data, Cparser\_func\_memory}}{4}
+\contentsline {subsection}{\numberline {2.5}\bigskip Class CInput}{4}
+\contentsline {subsection}{\numberline {2.6}Class CGWire}{5}
+\contentsline {subsection}{\numberline {2.7}Class CGNetworkS}{5}
+\contentsline {subsection}{\numberline {2.8}Class CGProcessor}{7}
+\contentsline {subsection}{\numberline {2.9}CGTransition}{8}
+\contentsline {section}{\numberline {3}Specific implementation of classes}{8}
+\contentsline {subsection}{\numberline {3.1}CGDistributionBus}{8}
+\contentsline {subsection}{\numberline {3.2}CGBus}{9}

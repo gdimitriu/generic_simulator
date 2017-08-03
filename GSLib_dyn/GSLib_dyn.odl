@@ -1,0 +1,16 @@
+// GSLib_dyn.odl : type library source for GSLib_dyn.dll
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (GSLib_dyn.tlb).
+
+[ uuid(89AE72CC-6F11-11DB-B910-BE3FED94C247), version(1.0) ]
+library GSLib_dyn
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

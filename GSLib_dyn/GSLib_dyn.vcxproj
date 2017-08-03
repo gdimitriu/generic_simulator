@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{81461E09-1563-4464-AAE3-3EA1B8D20DC9}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>e:\my-data\work\projects\generic_simulator\Lib\Release\</OutDir>
+    <IntDir>e:\my-data\work\projects\generic_simulator\Lib\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_GSLIB;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>e:\my-data\work\projects\generic_simulator\Lib\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>e:\my-data\work\projects\generic_simulator\Lib\Release\GSLib_dyn.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>e:\my-data\work\projects\generic_simulator\Lib\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>e:\my-data\work\projects\generic_simulator\Lib\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>e:\my-data\work\projects\generic_simulator\Lib\Release\GSLib_dyn.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>e:\my-data\work\projects\generic_simulator\Lib\Release\GSLib_dyn.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>e:\my-data\work\projects\generic_simulator\Lib\Release\GSLib_dyn.dll</OutputFile>
+      <ImportLibrary>e:\my-data\work\projects\generic_simulator\Lib\Release\GSLib_dyn.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\GSLib_dyn.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;NO_WARN_MBCS_MFC_DEPRECATION;_GSLIB;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>e:\my-data\work\projects\generic_simulator\Lib\Debug\GSLib_dyn.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;_AFXEXT;_GSLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>e:\my-data\work\projects\generic_simulator\Lib\Debug\GSLib_dyn.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>.\GSLib_dyn.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="element.cpp" />
+    <ClCompile Include="GBus.cpp" />
+    <ClCompile Include="GCElem.cpp" />
+    <ClCompile Include="GCoordinator.cpp" />
+    <ClCompile Include="GCQueue.cpp" />
+    <ClCompile Include="GData.cpp" />
+    <ClCompile Include="GDistributionBus.cpp" />
+    <ClCompile Include="GDistributionQ.cpp" />
+    <ClCompile Include="GDistributionSecv.cpp" />
+    <ClCompile Include="GInput.cpp" />
+    <ClCompile Include="GMesure.cpp" />
+    <ClCompile Include="GNetworkS.cpp" />
+    <ClCompile Include="GOutput.cpp" />
+    <ClCompile Include="GProcessor.cpp" />
+    <ClCompile Include="GProcessorS.cpp" />
+    <ClCompile Include="GRepartition.cpp" />
+    <ClCompile Include="GSLib_dyn.cpp" />
+    <ClCompile Include="GSum.cpp" />
+    <ClCompile Include="GTransition.cpp" />
+    <ClCompile Include="GTransitionS.cpp" />
+    <ClCompile Include="GWire.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="NetworkS.cpp" />
+    <ClCompile Include="Output.cpp" />
+    <ClCompile Include="parser_func.cpp" />
+    <ClCompile Include="parser_func_data.cpp" />
+    <ClCompile Include="parser_func_memory.cpp" />
+    <ClCompile Include="Processor.cpp" />
+    <ClCompile Include="Queues.cpp" />
+    <ClCompile Include="SCoordinator.cpp" />
+    <ClCompile Include="SDotP.cpp" />
+    <ClCompile Include="SGain.cpp" />
+    <ClCompile Include="SInputCoordinator.cpp" />
+    <ClCompile Include="SInputPartModification.cpp" />
+    <ClCompile Include="SMult.cpp" />
+    <ClCompile Include="SNorm.cpp" />
+    <ClCompile Include="SProcessor.cpp" />
+    <ClCompile Include="SQueue.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="STLineSD.cpp" />
+    <ClCompile Include="STLineVD.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="GSLib_dyn.def" />
+    <CustomBuild Include="res\GSLib_dyn.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="GSLib_dyn.odl">
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Win32</TargetEnvironment>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Win32</TargetEnvironment>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GSLib_dyn.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="element.h" />
+    <ClInclude Include="GBus.h" />
+    <ClInclude Include="GCElem.h" />
+    <ClInclude Include="GCoordinator.h" />
+    <ClInclude Include="GCQueue.h" />
+    <ClInclude Include="GData.h" />
+    <ClInclude Include="GDistributionBus.h" />
+    <ClInclude Include="GDistributionQ.h" />
+    <ClInclude Include="GDistributionSecv.h" />
+    <ClInclude Include="GInput.h" />
+    <ClInclude Include="GMesure.h" />
+    <ClInclude Include="GNetworkS.h" />
+    <ClInclude Include="GOutput.h" />
+    <ClInclude Include="GProcessor.h" />
+    <ClInclude Include="GProcessorS.h" />
+    <ClInclude Include="GRepartition.h" />
+    <ClInclude Include="GSLib.h" />
+    <ClInclude Include="GSLib_dyn.h" />
+    <ClInclude Include="GSum.h" />
+    <ClInclude Include="GTransition.h" />
+    <ClInclude Include="GTransitionS.h" />
+    <ClInclude Include="GWire.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="NetworkS.h" />
+    <ClInclude Include="Output.h" />
+    <ClInclude Include="parser_func.h" />
+    <ClInclude Include="parser_func_data.h" />
+    <ClInclude Include="parser_func_memory.h" />
+    <ClInclude Include="Processor.h" />
+    <ClInclude Include="Queues.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SCoordinator.h" />
+    <ClInclude Include="SDotP.h" />
+    <ClInclude Include="SGain.h" />
+    <ClInclude Include="SInputCoordinator.h" />
+    <ClInclude Include="SInputPartModification.h" />
+    <ClInclude Include="SMult.h" />
+    <ClInclude Include="SNorm.h" />
+    <ClInclude Include="SProcessor.h" />
+    <ClInclude Include="SQueue.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="STLineSD.h" />
+    <ClInclude Include="STLineVD.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

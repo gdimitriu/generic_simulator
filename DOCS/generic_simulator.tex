@@ -1,0 +1,616 @@
+
+\documentclass[a4paper,oneside,notitlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2552}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{Created=Sunday, April 03, 2005 11:48:37}
+%TCIDATA{LastRevised=Tuesday, July 26, 2005 18:32:22}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="Title" CONTENT="Generic Simulator">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+
+\setlength{\textheight}{8in}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\evensidemargin}{0mm}
+\setlength{\marginparwidth}{0mm}
+\setlength{\marginparsep}{0mm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{Generic Simulator}
+\author{Dimitriu Gabriel}
+\maketitle
+\tableofcontents
+
+\section{\protect\bigskip Introduction}
+
+Realization of modelation and simulation of one system is composed from
+three base objects: \textit{the real system }which is seen like a the source
+of data; \textit{the model,} which is a collection of instructions to
+generate the comparable dates with the real system; \textit{the simulator,}
+which is an algorithm programmed into one language which execute the models
+instructions.
+
+\subsection{Formal definition of base models}
+
+Any simulation model could be considered like a real time dynamic system,
+its components are described by three types of variables: input variables,
+state variables and output variables. The dynamic behavioral of the model is
+described by the DEVS (Discrete Event System Specification) object, this is
+define:
+
+\begin{equation}
+DEVS=(X,S,Y,ta,\delta _{int},\delta _{ext},\lambda )  \label{DEVS}
+\end{equation}
+
+where:
+
+\begin{itemize}
+\item X is the "input" collection, Cartesian product of the input variables.
+
+\item Y is the "output" collection, cartesian product of the output
+variables.
+
+\item S is the "state" collection, cartesian product of the state variables.
+
+\item $ta:S\rightarrow R_{+}\cup (0,\infty )$ is the time advance
+function,its value $ta(s),s\in S$ \ represents the time interval after the
+system make a transition between state $s$ and state $\delta _{int}(s)$.
+
+\item $\delta _{int}(s):S\rightarrow S$ is the internal transition function
+of the system, this function represent the transition between one and
+another state without the external influence.
+
+\item $\delta _{ext}(s):Q\times I\rightarrow Q$, where $Q=\{(s,e)|s\in
+S,e\in R,0\leq e\leq ta\}$ is the external transition function of the
+system, this function represent the transition between one and another state
+when an external event arrived at time $e$.
+
+\item $\lambda :S\rightarrow Y$ is the output function, if the system is in
+state s then $\lambda (s)$ will be the information sent to the output before
+the systems make a transition given by the transition function (internal or
+external).
+\end{itemize}
+
+\begin{definition}
+The base model is the model ruled by DEVS formal definition.
+\end{definition}
+
+The system function is define by the following function:
+
+\begin{equation*}
+\left\{ 
+\begin{array}{l}
+\exists e\in \left[ T,T+ta(s)\right] \,\Rightarrow \,\exists x\in X\,\
+si\,se\,executa\,\delta _{ext}(s,e,x) \\ 
+\nexists e\in \left[ T,T+ta(s)\right] \,\Rightarrow \,\exists x\in X\,\
+si\,se\,executa\,\delta _{int}(s)%
+\end{array}%
+\right.
+\end{equation*}
+
+\subsection{Network with static structure}
+
+Coupling more models is done by using a new model, \textit{the network model}%
+, which can be with static or dynamic structure.
+
+The static structure model is define by%
+\begin{equation}
+DN=(D,\{M_{i}\},\{I_{i}\},\{Z_{i,j}\},select)  \label{DN}
+\end{equation}
+
+where
+
+\begin{itemize}
+\item D is identifications collection of system components.
+
+\item for each $i\in D$ we have
+
+\begin{itemize}
+\item $M_{i}$ is the base model associated with i
+
+\item $I_{i}$ is the collection of systems influence by i
+\end{itemize}
+
+\item for each $j\in I_{i}$ we have the function $Z_{i,j}$ which is the
+message transfer function from the system \thinspace $i$ to the system $j$.
+
+\item select is the selection function: from the components who change their
+state in the same moment this function choose the component which influence
+the state of the coupled model.
+\end{itemize}
+
+\begin{theorem}
+Any model defined using the stucture (\ref{DN}) is a base model.
+\end{theorem}
+
+\section{Class Hierarchy and functionality}
+
+Here there are three different types of classes:
+
+\begin{enumerate}
+\item Generic classes for the simulator data and functions. These classes
+are inherited by other generic classes
+
+\item Generic classes for the simulator. These classes are inherited by user
+classes.
+
+\item User classes. These classes are the simulator specific application.
+\end{enumerate}
+
+Type 1 classes are: \textit{CGData, CGRepartition, Queues, Cparser\_func,
+Cparser\_func\_data, }\linebreak \textit{\ Cparser\_func\_memory.}
+
+Type 2 classes are: \textit{CGInput, CGOutput, CGNetworkS,
+CGProcessor,CGTransition, CGWire.}
+
+Type 3 classes are: \textit{CInput, COutput, CNetworkS, CProcessor,
+CTransition, CCoordonator}.
+
+\subsection{Class CGData}
+
+This class inherits the CObject class and is the base for the CGInput and
+CGOutput classes.
+
+This class basic functionality is to hold the data and time for transfer
+(ports) and internal processor Quells.
+
+Principal functions:
+
+\begin{itemize}
+\item CGData is the constructor who can take one or two arguments: first
+argument is the name of the port who held the data and the second argument
+is optionally and is the initial value of the data (the second argument is
+used for quells of the processor if we want only the value).
+
+\item GetDim is the function who return the dimension of the data port.
+
+\item GetName is the function who return the name of the port.
+
+\item SetDim is the function who set the dimension of the data port.
+
+\item SetWTime is the function who set working time of the data who is
+holded by the port.
+
+\item SetTime is the function who set \ the time when the data was created.
+
+\item SetParent is the function who set the parent who held this port.
+
+\item GetParent is the function who return the parent who held this port.
+
+\item SetParentW is the function who set the wire who held this port into
+connection with other ports.
+
+\item GetParentW is the function who return the wire who held this port.
+
+\item \textit{GetClientExt} is the function who return the external client.
+
+\item \textit{Set} is the function who set the data value.
+
+\item \textit{Get} is the function who get the data value.
+
+\item \textit{Reset} is the function who reset the data value.
+
+\item \textit{SetSource} is the function who set the pointer to the parent
+of the data.
+
+\item \textit{GetSource} is the function who return the pointer to the
+parent of data.
+\end{itemize}
+
+Functions \textit{Set,Get} and \textit{Reset} are virtual functions who are
+replaced by function in \textit{CGInput} and \textit{CGOutput} classes.
+
+\subsection{Class CGInput}
+
+This class inherits the \textit{CGData} and it must be derived by class 
+\textit{CInput} \ to obtain the correct input class.
+
+This class is the input port for all systems: processor and network.
+
+This class also held the pointer to the generator and file if the user
+desired to have an log file of the generator.
+
+If the dimension of port is multidimensional because this wires are
+synchronized it can held a generator for each element of data.
+
+Functions:
+
+\begin{itemize}
+\item \textit{CGInput} is the constructor for the input port. It has two
+arguments: one is the name of the port and the second argument, who is
+optionally, is the name of the file in which we put the log.
+
+\item \textit{SetGenerator} is the function who set the type of the
+generator for each element of the data if the dimension is greater than 1.
+
+\item \textit{Set} is the function who set the value of data; this function
+overrides the function \textit{Set} defined in \textit{CGData} class. First
+version who takes no argument and who generate a value given by the
+generator. Second version who takes one argument and who put the value given
+by the argument into data; if the port has a generator the argument is added
+to the generated by the generator. If a file is defined the value is also
+put in the log file.
+\end{itemize}
+
+\subsection{Class CGOutput}
+
+This class inherits the \textit{CGData} and it must be derived by class 
+\textit{COutput} \ to obtain the correct input class.
+
+This class is the output port for all systems: processor and network.
+
+Functions:
+
+\begin{itemize}
+\item \textit{CGOutput} is the constructor. It has two argument: first
+argument is the name of the port and the second argument, who is optionally,
+is the name of the log file.
+
+\item \textit{Set} is the function who set the value of the port. If a file
+is defined the value is also put in the log file.
+\end{itemize}
+
+\subsection{Classes \textit{Cparser\_func, Cparser\_func\_data,
+Cparser\_func\_memory}}
+
+These classes are for parser for functions. These classes are called from
+CGTransition class.
+
+\subsection{\protect\bigskip Class CInput}
+
+This class inherits \textit{CGInput}. This class have to be derived to
+accommodate the specific function of the port.
+
+\subsection{Class CGWire}
+
+This class is the base of the communication of the networks. It has several
+base functions: send the message from an input (output) port to the
+connected output (input) port from diferse networks and processors; make teh
+sum of different ports if they have the same dimensions.
+
+Functions:
+
+\begin{itemize}
+\item \textit{CGWire} is the constructor who takes three arguments: first
+argument is the pointer to the parent port (input/output) from which we take
+the data and commands; second argument is the type of the wire: input,
+output, internal; third argument is the pointer to the parent network who
+has this wire.
+
+\item \textit{Add} is the function who add a new port to the wire. This port
+is connected to the parent port.
+
+\item \textit{receivemsg} is the function who send the message thruout the
+coonection.It has two arguments: first argument is the type of message
+(init, internal, external or output); second argument is the time when the
+message has arrived.
+
+\item \textit{select} is the function who select the closest end of network
+or processor.
+
+\item \textit{sigma} is the function who return the minimum of end time or
+the element with the lowest queue from the connected elements.
+
+\item \textit{IsHere} return true is the port given in the argument is
+connected in this wire.
+
+\item \textit{GetSource} return the source of the connected port.
+\end{itemize}
+
+\subsection{Class CGNetworkS}
+
+This is the base class who contain all the information. This class held the
+connection between the processors and internal networks. This class is also
+the frontend of the simulation.
+
+Functions:
+
+\begin{itemize}
+\item \textit{CGNetworkS} is the constructor for the class. It has two
+parameters: first which is optional hold the parent of the network, if this
+is NULL or isn't given, this is conssider that that network is the frontend
+of the simulation; the second argument is the name of the network.
+
+\item \textit{GetName} is the function who return the name of the network.
+
+\item \textit{SetParent} is the function who set the parent of the network,
+it overwrite the parameter given by the constructor.
+
+\item \textit{GetParent} is the function who return the parent of the
+network.
+
+\item \textit{GetPort} is the function who return the pointer and the type
+in the second argument to the port characterisated by the name.
+
+\item \textit{AddPort} is the function who add a port to a network and the
+type of the port (input/output).
+
+\item \textit{AddNetworkNetwork} is the function who add a wire between
+ports of two internal networks.
+
+\item \textit{AddProcNetwork} is the function who add a wire between ports
+of one processor and one internal network.
+
+\item \textit{AddNetworkProc} is the function who add a wire between ports
+of one internal network and one processor.
+
+\item \textit{AddParentNet} is the function who add a wire between a port
+from the network and a port from an internal network.
+
+\item \textit{AddParentProc} is the function who add a wire between a port
+from the network and a port from an internal processor.
+
+\item \textit{AddProcProc} is the function who add a wire between a port
+from one internal processor to an proc from another internal processor.
+
+\item \textit{AddNetwork} is the function who add the appartenence of a
+network to this network.
+
+\item \textit{AddProc} is the function who add the appartenence of a
+processor to this network (this is use for active processors).
+
+\item \textit{AddProcP} is the function who add the appartenence of a
+processor to this network (this is use for passive processors).
+
+\item \textit{GetTypeWire} is the function who return the type of the wire
+(true for unique signal).
+
+\item \textit{SetTypeWire} is the function who set the type of the wire
+(true for unique signal).
+
+\item \textit{GetInType} is the function who return the type of input data.
+
+\item \textit{SetInType} is the function who set the type of input data
+(false for data is not fractionary and true the data is divided thruout the
+processors and networks).
+
+\item \textit{SetTypeQueue} is the function who set the administration type
+of queue (false for descentralized and true for centralized).
+
+\item \textit{GetTypeQueue} is the function who return the administration
+type of queue.
+
+\item \textit{SetClockPrecision} if the function who set the precision of
+the clock $\pm $\ the value when a process is conssider out or in.
+
+\item \textit{PrintData} is the function who print the curent data on stdout.
+
+\item \textit{sigma} if the function who return the value of the input port
+(when the process is end).
+
+\item \textit{SetProc} is the function who set the processor,given by it's
+pointer, has executed the transition at a specific time.
+
+\item \textit{SetNet} is the function who set \ the network, given by it's
+pointer, has executed the transition at a specific time.
+
+\item \textit{receivemsg} is the function of transfer messages:
+0-init,1-internal,2-external,3-output.
+\end{itemize}
+
+\subsection{Class CGProcessor}
+
+This class is the base class of the simulator. It contain the active
+processor.
+
+\begin{itemize}
+\item \textit{AddPort} it adds a \ port to the processor if type is true it
+is input port if it is false is output port.
+
+\item \textit{GetPort} it returns the pointer to the port with name port and
+return in type 0(is not found),1(is input port),2(is output port).
+
+\item \textit{SetParent} it sets the network parent of the \ processor.
+
+\item \textit{GetParent} it returns the pointer to the parent of the
+processor.
+
+\item \textit{EnableQ} is the function who enable the queue of the processor.
+
+\item \textit{DisableQ} is the function who disable the queue of the
+processor.
+
+\item \textit{sigma} is the function who returns the done time and the
+dimension of the queue.
+
+\item \textit{SetClockPrecision} is the function who sets the increment of
+clock, it must have the same value as the clock in the coordonator, the
+simulation clock.
+
+\item \textit{GetPrevTime} is the function who returns the value of the time
+of the last event.
+
+\item \textit{GetTime} is the function who return the current time of
+simulation.
+
+\item \textit{GetName} is the function who return the name of the processor.
+
+\item \textit{CGProcessor} is the constructor which has some important
+arguments: type who sed if in a period of working the processor hold the
+data or it reset the outputs port to zero; generator is the transition
+function of the processor.
+
+\item \textit{receivemsg} is the interaction function of the processor. type
+has 4 value: 0=initialization of the processor, 1=internal transition,
+2=external transition and 3=get to the output the actual values.
+
+\item \textit{SetFirst} is the function who set if the first transition
+could be one internal of it must be one external.
+
+\item \textit{IsDelayed} is the function who set if the data is delayed or
+the value stored is the correct values.
+
+\item \textit{SettN} is the function who set the new done time.
+
+\item \textit{SettL} is the function who set the last event time.
+
+\item \textit{receive0} is the function who is executed in case of
+transition 0.
+
+\item \textit{receive1} is the function who is executed in case of
+transition 1.
+
+\item \textit{receive2} is the function who is executed in case of
+transition 2.
+
+\item \textit{receive3} is the function who is executed in case of
+transition 3.
+
+\item \textit{set\_extfunc} is the function who set the external function,
+so the function for transition 2.
+
+\item \textit{set\_intfunc} is the function who set the internal function,
+so the function for transition 1.
+\end{itemize}
+
+\subsection{CGTransition}
+
+Is the class who held the real functionality of a processor. This class must
+be derivate in all cases to achieve the real functionality of the processor.
+
+\begin{itemize}
+\item \textit{SetRepartitionT} is the function who set the repartition table
+for an input repartion.
+
+\item \textit{GetIndexT} is the function who return the real index in the
+table of the input repartition for the argument.
+
+\item \textit{Set} is the function who set the seed for the random number
+generator.
+
+\item \textit{GetIndexR} is the function who return
+
+\item \textit{SetClk} is the function who set the clock of the simulation
+for a waitting process.
+
+\item \textit{SetParent} is the function who set the parent processor of the
+transition.
+
+\item \textit{CGTransition} is the constructor who create the actual random
+repartition.
+
+\item \textit{proc\_deltaext} is the function who is executed when an
+external transition cames (it is virtual because real application must
+derivate it).
+
+\item \textit{proc\_delatint} is the function who is executed when an
+internal transition cames (it is virtual because real application must
+derivate it).
+
+\item \textit{proc\_lambda} is the output function which is executed after
+each transition (it is virtual and some application must derivate it if they
+want to filter some output ports).
+
+\item \textit{assign\_memory} is the function who assign the variable memory
+for the parser for all function.
+
+\item \textit{set\_extfunc} is the function who set the parser for the
+external function for the specific output port.
+
+\item \textit{set\_intfunc} is the function who set the parser for the
+internal function for the specific output port.
+
+\item \textit{is\_parallel} is the function who set the parser in parallel
+mode, that mean all the wire from an output port with dimension great than 1
+is conssider to have the same internal and external function.
+\end{itemize}
+
+\section{Specific implementation of classes}
+
+There are the classes with specific application like: mux/demux
+(DistributionBus), bus, etc
+
+\subsection{CGDistributionBus}
+
+Thsi is the class which implementate the MUX/DEMUX.
+
+\begin{itemize}
+\item \textit{GDistributionBus} is the constructor who takes two arguments:
+one the name of the instance and second is the type who is parsed to the
+processor.
+
+\item \textit{SetType} is the function who set the type of the class:
+DEMUX/MUX.
+
+\item \textit{sigma} is the function who return the closest done time of the
+element.
+
+\item \textit{proc\_lambda} is the output function.
+
+\item \textit{receivemsg} is the interaction function for transition.
+
+\item \textit{receive0} is the function who is executed in case of
+transition 0.
+
+\item \textit{receive1} is the function who is executed in case of
+transition 1.
+
+\item \textit{receive2} is the function who is executed in case of
+transition 2.
+
+\item \textit{receive3} is the function who is executed in case of
+transition 3.
+\end{itemize}
+
+\subsection{CGBus}
+
+Is the class who distributes a multidimensional wire to other wires.
+
+\begin{itemize}
+\item \textit{CGBus} is the constructor who takes two parameters: one is the
+name and the second is the type who is parsed to the processor base class.
+
+\item \textit{SetSync} is the function who set if the element waits for all
+input elements to comes and the transition is done at next internal
+transition or when all input elements arrived the transition is done.
+
+\item \textit{proc\_lambda} is the output function.
+
+\item \textit{receivemsg} is the interaction function for transition.
+
+\item \textit{receive0} is the function who is executed in case of
+transition 0.
+
+\item \textit{receive1} is the function who is executed in case of
+transition 1.
+
+\item \textit{receive2} is the function who is executed in case of
+transition 2.
+
+\item \textit{receive3} is the function who is executed in case of
+transition 3.
+\end{itemize}
+
+\end{document}

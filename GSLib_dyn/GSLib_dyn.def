@@ -1,0 +1,10 @@
+; GSLib_dyn.def : Declares the module parameters for the DLL.
+
+LIBRARY      "GSLib_dyn"
+DESCRIPTION  'GSLib_dyn Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	DllCanUnloadNow PRIVATE
+	DllGetClassObject PRIVATE
+	DllRegisterServer PRIVATE

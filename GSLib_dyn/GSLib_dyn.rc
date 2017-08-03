@@ -1,0 +1,355 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\GSLib_dyn.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "GSLib_dyn DLL\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "GSLib_dyn\0"
+            VALUE "LegalCopyright", "Copyright (C) 2006\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "GSLib_dyn.DLL\0"
+            VALUE "ProductName", "GSLib_dyn Dynamic Link Library\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "OLESelfRegister", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_InputCoordinator DIALOG DISCARDABLE  0, 0, 391, 213
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Add",IDC_ADD,215,53,60,14
+    PUSHBUTTON      "&Check",IDC_check,155,68,50,14
+    PUSHBUTTON      "Get Dimension",IDC_gDim,156,49,50,14
+    PUSHBUTTON      "&Previous",IDC_prev,92,136,50,14
+    PUSHBUTTON      "&Next",IDC_next,92,155,50,14
+    PUSHBUTTON      "&Modify",IDC_modify,216,90,58,14
+    PUSHBUTTON      "Exit",IDCANCEL,334,7,50,14
+    LTEXT           "FileName",IDC_STATIC,16,14,31,8
+    EDITTEXT        IDC_fileName,50,13,162,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_timetable,"RICHEDIT",ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,280,65,
+                    97,141
+    LTEXT           "Port",IDC_STATIC,14,53,22,8
+    EDITTEXT        IDC_portname,36,53,27,14,ES_AUTOHSCROLL
+    LTEXT           "Dimension",IDC_STATIC,75,53,33,8
+    EDITTEXT        IDC_dim,112,53,29,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Time",IDC_STATIC,215,122,17,8
+    EDITTEXT        IDC_time,235,118,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Type of Event",IDC_STATIC,214,136,61,70
+    CONTROL         "Init",IDC_init,"Button",BS_AUTORADIOBUTTON,225,148,24,
+                    10
+    CONTROL         "Internal",IDC_internal,"Button",BS_AUTORADIOBUTTON,225,
+                    162,38,10
+    CONTROL         "External",IDC_external,"Button",BS_AUTORADIOBUTTON,225,
+                    176,40,10
+    CONTROL         "PrintData",IDC_print,"Button",BS_AUTORADIOBUTTON,225,
+                    190,44,10
+    PUSHBUTTON      "&Delete",IDC_Delete,216,72,59,14
+    PUSHBUTTON      "&Load",IDC_Load,219,13,50,14
+    PUSHBUTTON      "&Save",IDC_Save,219,31,50,14
+    CONTROL         "",IDC_InputData,"RICHEDIT",ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_BORDER | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP,155,115,47,91
+    LTEXT           "InputData",IDC_STATIC,162,106,30,8
+    GROUPBOX        "Type of Data",IDC_STATIC,87,82,61,47
+    CONTROL         "Manual Data",IDC_dmanual,"Button",BS_AUTORADIOBUTTON,91,
+                    94,54,10
+    CONTROL         "Automatic Data",IDC_automatic,"Button",
+                    BS_AUTORADIOBUTTON,91,112,62,10
+    LTEXT           "Repartition",IDC_STATIC,31,84,34,8
+    EDITTEXT        IDC_rep,7,100,76,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_error,96,33,105,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "CLK_Precision",IDC_STATIC,7,121,45,8
+    EDITTEXT        IDC_clkprec,7,132,75,12,ES_AUTOHSCROLL
+    LTEXT           "CLK Advance",IDC_STATIC,7,148,42,8
+    EDITTEXT        IDC_clkadvance,7,160,74,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Reset",IDC_reset,92,175,50,14
+    PUSHBUTTON      "Relink Up",IDC_relinkup,334,24,50,14
+    PUSHBUTTON      "Relink Down",IDC_relinkdown,334,40,50,14
+END
+
+IDD_InputPartModification DIALOG DISCARDABLE  0, 0, 391, 369
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Exit",IDCANCEL,319,7,50,14
+    GROUPBOX        "Element",IDC_STATIC,61,28,54,57,WS_GROUP
+    CONTROL         "Port",IDC_wantport,"Button",BS_AUTORADIOBUTTON,68,40,28,
+                    10
+    CONTROL         "Processor",IDC_wantproc,"Button",BS_AUTORADIOBUTTON,68,
+                    54,42,10
+    CONTROL         "Network",IDC_wantnet,"Button",BS_AUTORADIOBUTTON,67,70,
+                    41,10
+    GROUPBOX        "From",IDC_STATIC,121,28,54,57,WS_GROUP
+    CONTROL         "Standalone",IDC_standalone,"Button",BS_AUTORADIOBUTTON,
+                    129,39,51,10
+    CONTROL         "Processor",IDC_fromproc,"Button",BS_AUTORADIOBUTTON,129,
+                    53,47,10
+    CONTROL         "Network",IDC_fromnet,"Button",BS_AUTORADIOBUTTON,129,70,
+                    41,10
+    EDITTEXT        IDC_element,61,109,53,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Reset Level",IDC_level_reset,189,34,50,14
+    PUSHBUTTON      "Up Level",IDC_level_up,189,54,50,14
+    PUSHBUTTON      "Down Level",IDC_level_down,189,73,50,14
+    EDITTEXT        IDC_level,248,109,49,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Parent Network",IDC_STATIC,193,113,47,8
+    PUSHBUTTON      "Delete",IDC_del,320,60,49,14
+    CONTROL         "",IDC_levels,"RICHEDIT",ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP,246,28,60,79
+    LTEXT           "Moment in Time",IDC_STATIC,320,27,49,8
+    EDITTEXT        IDC_time,320,40,49,14,ES_AUTOHSCROLL
+    GROUPBOX        "Type",IDC_STATIC,259,188,61,52,WS_GROUP
+    CONTROL         "Brother of",IDC_brother,"Button",BS_AUTORADIOBUTTON,265,
+                    196,40,10
+    CONTROL         "Copy from",IDC_copy,"Button",BS_AUTORADIOBUTTON,265,210,
+                    55,10
+    CONTROL         "New elem",IDC_new,"Button",BS_AUTORADIOBUTTON,265,223,
+                    46,10
+    PUSHBUTTON      "Add Part",IDC_addelem,320,79,49,14
+    GROUPBOX        "Element",IDC_STATIC,7,164,58,57,WS_GROUP
+    CONTROL         "Port",IDC_copyport,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,13,178,28,10
+    CONTROL         "Processor",IDC_copyproc,"Button",BS_AUTORADIOBUTTON,13,
+                    191,41,10
+    CONTROL         "Network",IDC_copynet,"Button",BS_AUTORADIOBUTTON,13,204,
+                    41,10
+    PUSHBUTTON      "Reset Level Copy",IDC_copy_reset,127,165,57,14
+    PUSHBUTTON      "Up Level Copy",IDC_copy_up,127,185,58,14
+    PUSHBUTTON      "Down Level Copy",IDC_copy_down,127,204,58,14
+    LTEXT           "Network",IDC_STATIC,125,228,26,8
+    EDITTEXT        IDC_copy_level,156,224,29,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_copy_element,7,227,53,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_copy_from,65,227,57,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_copy_levels,"RICHEDIT",ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,193,162,
+                    59,79
+    GROUPBOX        "From",IDC_STATIC,67,164,58,57
+    CONTROL         "Standalone",IDC_copy_standalone,"Button",
+                    BS_AUTORADIOBUTTON,75,176,43,10
+    CONTROL         "Processor",IDC_copy_fromproc,"Button",
+                    BS_AUTORADIOBUTTON,75,190,47,10
+    CONTROL         "Network",IDC_copy_fromnet,"Button",BS_AUTORADIOBUTTON,
+                    75,204,41,10
+    LTEXT           "Operation to Element with these characteristics",
+                    IDC_STATIC,164,13,139,8
+    LTEXT           "Operation from Element with these characteristics",
+                    IDC_STATIC,70,149,146,8
+    GROUPBOX        "Wires",IDC_STATIC,260,145,72,40,WS_GROUP
+    CONTROL         "Same as Brother",IDC_same,"Button",BS_AUTORADIOBUTTON,
+                    265,155,61,10
+    CONTROL         "New Wires",IDC_newwire,"Button",BS_AUTORADIOBUTTON,266,
+                    169,58,10
+    GROUPBOX        "To",IDC_STATIC,68,258,63,57,WS_GROUP
+    CONTROL         "Processor",IDC_toproc,"Button",BS_AUTORADIOBUTTON,77,
+                    270,47,10
+    CONTROL         "Network",IDC_tonet,"Button",BS_AUTORADIOBUTTON,77,285,
+                    41,10
+    CONTROL         "Parent",IDC_toparent,"Button",BS_AUTORADIOBUTTON,77,301,
+                    36,10
+    LTEXT           "From Port",IDC_STATIC,18,255,30,8
+    EDITTEXT        IDC_fromtoport,13,267,40,14,ES_AUTOHSCROLL
+    LTEXT           "Port",IDC_STATIC,70,340,13,8
+    EDITTEXT        IDC_toport,91,340,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "Type",IDC_STATIC,13,286,48,40,WS_GROUP
+    CONTROL         "Input",IDC_in,"Button",BS_AUTORADIOBUTTON,18,298,30,10
+    CONTROL         "Output",IDC_out,"Button",BS_AUTORADIOBUTTON,18,312,35,
+                    10
+    CONTROL         "",IDC_wireshist,"RICHEDIT",ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,137,261,
+                    75,92
+    CTEXT           "Wires Panel",IDC_STATIC,42,247,127,8
+    PUSHBUTTON      "Add Wire",IDC_addwire,13,327,50,14
+    CONTROL         "",IDC_errors_messages,"RICHEDIT",ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,223,260,
+                    108,93
+    CTEXT           "Error Messages",IDC_STATIC,226,249,103,8
+    LTEXT           "Name",IDC_STATIC,69,322,20,8
+    EDITTEXT        IDC_topart,91,319,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_from,125,91,48,30,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_up_levels,190,92,48,30,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "New Element",IDC_new_old,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,31,51,10
+    COMBOBOX        IDC_oldelem,61,91,48,30,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "Passive",IDC_pas_act,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,14,95,34,10
+    CONTROL         "All",IDC_all,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,
+                    108,24,10
+    GROUPBOX        "Type",IDC_STATIC,7,52,48,40
+    CONTROL         "Input",IDC_input,"Button",BS_AUTORADIOBUTTON,13,63,30,
+                    10
+    CONTROL         "Output",IDC_output,"Button",BS_AUTORADIOBUTTON,13,76,35,
+                    10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_InputCoordinator, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 384
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 206
+    END
+
+    IDD_InputPartModification, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 384
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 362
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\GSLib_dyn.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
