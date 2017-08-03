@@ -4,6 +4,9 @@
 /*
 	Copyright 2005 Gabriel Dimitriu
 
+	This parser functions is a modified version of the parser from Schild "C The
+	Complete Reference" Copyright 1995 McGraw-Hill Cook Company International.
+
 	This file is part of parser functions.
 	This file contains the implementation of memory variables.
 	

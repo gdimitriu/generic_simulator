@@ -5,6 +5,9 @@
 	Copyright Gabriel Dimitriu
 	2005 version 1.0
 	2006 version 2.0
+	
+	This parser functions is a modified version of the parser from Schild "C The 
+	Complete Reference" Copyright 1995 McGraw-Hill Cook Company International.
 
 	This file is part of Parser Functions.
 	This file contains the implementation of parser for functions.
