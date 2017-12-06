@@ -1,5 +1,5 @@
 # generic_simulator
-Generic simulator using C++ and inheritance
+Generic simulator using DEVS (Discrete Event System Specification) using C++ and inheritance
 
 This project was started in 2002 as a simple demonstrator project for DEVS (Discrete Event System Specification) and was ended in 2007.
 
@@ -19,4 +19,4 @@ The project is stopped around 2007 and I have to migrate from VC 6.0 to Visual S
 
 This project is a dead end because for low memory management and easy connection I break the POO encapsulation and because I have used MFC Objects instead of stl objects. For the simple tests it was working but the problem arise on dynamical creation/duplicate of projects.
 
-This project will be recreated in java as stand-alone or as part of the Chappy project.
+This project will be recreated (from scratch) in java as devs_simulator and maybe later as part of the Chappy project.
